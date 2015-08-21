@@ -11,7 +11,6 @@ import static com.osahub.thehouse.dao.UserDetailsDao.getType;
 public class LoginController extends HttpServlet {
 	public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException,ServletException
 	{
-		res.setContentType("text/html");
 		String uID=req.getParameter("Email");
 		String pass=req.getParameter("Password");
 		if(validate(uID,pass))

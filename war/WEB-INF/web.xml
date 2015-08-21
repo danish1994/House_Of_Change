@@ -149,15 +149,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>Add Admin</servlet-name>
-		<servlet-class>com.osahub.thehouse.controller.AddAdmin</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Add Admin</servlet-name>
-		<url-pattern>/addadmin</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
 		<servlet-name>Facebook Login</servlet-name>
 		<servlet-class>com.osahub.thehouse.controller.FacebookLoginController</servlet-class>
 	</servlet>
@@ -191,15 +182,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<servlet-mapping>
 		<servlet-name>Verify Password</servlet-name>
 		<url-pattern>/checkPassword</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>Demo</servlet-name>
-		<servlet-class>com.osahub.thehouse.controller.Demo</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Demo</servlet-name>
-		<url-pattern>/test</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
