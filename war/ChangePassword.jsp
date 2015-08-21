@@ -132,7 +132,7 @@
 						<div class="contact-bottom" align="center">
 							<div class="col-md-4 in-contact" style="width: 70%">
 								<input type="password" name="password"
-									placeholder="Enter New Password"
+									placeholder="Enter New Password" required
 									style="color: #000; background: #fff">
 								<input type="hidden" name="uID" value="<%=user.next().getuID() %>">
 							</div>
