@@ -1,42 +1,42 @@
-<!-- Indices written at Wed, 19 Aug 2015 23:59:48 IST -->
+<!-- Indices written at Fri, 21 Aug 2015 23:18:19 IST -->
 
 <datastore-indexes>
 
-    <!-- Used 14 times in query history -->
+    <!-- Used 8 times in query history -->
     <datastore-index kind="PictureDetails" ancestor="false" source="auto">
         <property name="uID" direction="asc"/>
         <property name="date" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 7 times in query history -->
+    <!-- Used 4 times in query history -->
     <datastore-index kind="PictureDetails" ancestor="false" source="auto">
         <property name="claimID" direction="asc"/>
         <property name="claimStatus" direction="asc"/>
         <property name="date" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 4 times in query history -->
+    <!-- Used 5 times in query history -->
     <datastore-index kind="PictureDetails" ancestor="false" source="auto">
         <property name="type" direction="asc"/>
         <property name="valid" direction="asc"/>
         <property name="date" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 4 times in query history -->
+    <!-- Used 5 times in query history -->
     <datastore-index kind="PictureDetails" ancestor="false" source="auto">
         <property name="type" direction="asc"/>
         <property name="valid" direction="asc"/>
         <property name="likes" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 4 times in query history -->
+    <!-- Used 5 times in query history -->
     <datastore-index kind="PictureDetails" ancestor="false" source="auto">
         <property name="type" direction="asc"/>
         <property name="valid" direction="asc"/>
         <property name="view" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 1 time in query history -->
+    <!-- Used 2 times in query history -->
     <datastore-index kind="Comments" ancestor="false" source="auto">
         <property name="picID" direction="asc"/>
         <property name="date" direction="desc"/>

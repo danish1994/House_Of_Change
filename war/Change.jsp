@@ -143,7 +143,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="portfolio">
 		<div class="container">
 			<div class="portfolio-top ">
-				<h1>Hall of Fame</h1>
+				<h1>Hall of Change</h1>
 			</div>
 			<div class="sap_tabs">
 
@@ -156,7 +156,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<b>/</b>
 						<li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>most
 								viewed</span></li>
-						<div class="clearfix"></div>
 					</ul>
 					<div class="resp-tabs-container">
 						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
