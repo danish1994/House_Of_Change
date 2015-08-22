@@ -1,42 +1,29 @@
-<!-- Indices written at Fri, 21 Aug 2015 23:18:19 IST -->
+<!-- Indices written at Sat, 22 Aug 2015 22:07:22 IST -->
 
 <datastore-indexes>
 
-    <!-- Used 8 times in query history -->
-    <datastore-index kind="PictureDetails" ancestor="false" source="auto">
-        <property name="uID" direction="asc"/>
-        <property name="date" direction="desc"/>
-    </datastore-index>
-
-    <!-- Used 4 times in query history -->
-    <datastore-index kind="PictureDetails" ancestor="false" source="auto">
-        <property name="claimID" direction="asc"/>
-        <property name="claimStatus" direction="asc"/>
-        <property name="date" direction="desc"/>
-    </datastore-index>
-
-    <!-- Used 5 times in query history -->
+    <!-- Used 1 time in query history -->
     <datastore-index kind="PictureDetails" ancestor="false" source="auto">
         <property name="type" direction="asc"/>
         <property name="valid" direction="asc"/>
         <property name="date" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 5 times in query history -->
+    <!-- Used 1 time in query history -->
     <datastore-index kind="PictureDetails" ancestor="false" source="auto">
         <property name="type" direction="asc"/>
         <property name="valid" direction="asc"/>
         <property name="likes" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 5 times in query history -->
+    <!-- Used 1 time in query history -->
     <datastore-index kind="PictureDetails" ancestor="false" source="auto">
         <property name="type" direction="asc"/>
         <property name="valid" direction="asc"/>
         <property name="view" direction="desc"/>
     </datastore-index>
 
-    <!-- Used 2 times in query history -->
+    <!-- Used 1 time in query history -->
     <datastore-index kind="Comments" ancestor="false" source="auto">
         <property name="picID" direction="asc"/>
         <property name="date" direction="desc"/>

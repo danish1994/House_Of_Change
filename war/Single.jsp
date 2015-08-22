@@ -229,7 +229,7 @@
 									UserDetails ud = ofy().load().type(UserDetails.class).id(pd.getClaimID()).now();
 								%>
 								<tr>
-									<td><span class="date-in">Claimed By: <%= ud.getName() %> (ID: <%=pd.getClaimID() %>)</span></td>
+									<td><a href="#"><span class="date-in">Claimed By: <%= ud.getName() %> (ID: <%=pd.getClaimID() %>)</span></a></td>
 								</tr>
 								<%
 								}
