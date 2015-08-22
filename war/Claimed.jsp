@@ -12,7 +12,7 @@
 	content="We are here to bring a change in the Society">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Sociolizers">
-<title>Petition</title>
+<title>Claimed</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -25,17 +25,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Petition" />
 <script type="application/x-javascript">
-	
-	
-	
-	
-	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
-
-
 </script>
 <script>
 	(function(i, s, o, g, r, a, m) {
