@@ -185,6 +185,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>Load Comment</servlet-name>
+		<servlet-class>com.osahub.thehouse.controller.LoadCommentController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Load Comment</servlet-name>
+		<url-pattern>/loadComment</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Load Pictures</servlet-name>
+		<servlet-class>com.osahub.thehouse.controller.LoadPicturesController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Load Pictures</servlet-name>
+		<url-pattern>/loadPictures</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>Fame</servlet-name>
 		<jsp-file>/Fame.jsp</jsp-file>
 	</servlet>

@@ -13,7 +13,7 @@ public class CommentsDao {
 	public static void save(String picID, String comments, String uID,
 			String name,String id,Date date) {
 		Comments com = new Comments(picID, comments, uID, name,id,date);
-		ofy().save().entity(com);
+		ofy().save().entity(com).now();
 		ofy().clear();
 	}
 

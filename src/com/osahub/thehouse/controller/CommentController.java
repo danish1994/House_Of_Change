@@ -31,7 +31,7 @@ public class CommentController extends HttpServlet {
 		save(picID, comm, uID, name, id + uID + picID,date);
 		commentCount(picID);
 		System.out.println("Comment Saved");
-		res.sendRedirect("Single.jsp?picID=" + picID);
+		//res.sendRedirect("Single.jsp?picID=" + picID);
 	}
 
 }

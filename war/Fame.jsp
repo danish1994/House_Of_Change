@@ -91,8 +91,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								class="glyphicon glyphicon-home"></i> </a></li>
 						<li><a href="/shame" class="hvr-bounce-to-top">Hall of
 								Shame</a></li>
-						<li><a href="/change" class="hvr-bounce-to-top">Hall
-								of Change</a></li>
+						<li><a href="/change" class="hvr-bounce-to-top">Hall of
+								Change</a></li>
 						<li><a href="/fame" class="hvr-bounce-to-top">Hall of
 								Fame</a></li>
 						<li><a href="about.html" class="hvr-bounce-to-top">About
@@ -156,135 +156,140 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<b>/</b>
 						<li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>most
 								viewed</span></li>
-						<div class="clearfix"></div>
 					</ul>
+					<script>
+					var length = 9;
+					var l;
+					var newest,trending,viewes;
+					loadPicturesNewest();
+					loadPicturesTrending();
+					loadPicturesMostViewed();
+					function increaseLength()
+					{
+						length+=9;
+						showNewest(newest);
+						showTrending(trending);
+						showMostViewed(viewes);
+					}
+					function loadPicturesNewest(){
+						var xmlhttp = new XMLHttpRequest();
+						var url = '/loadPictures?type=fame&order=-date';
+						xmlhttp.onreadystatechange = function() {
+							if (xmlhttp.readyState % 5 == 4 && xmlhttp.status == 200) {
+								newest = JSON.parse(xmlhttp.responseText);
+								showNewest(newest);
+							}
+						}
+						xmlhttp.open("GET", url, true);
+						xmlhttp.send();
+					}
+					function showNewest(arr) {
+						var out = "";
+						var i,l=length;
+						if(length>arr.length)
+							l=arr.length;
+						for (i = 0; i < l; i++) {
+							out += '<div class="tab_img">';
+							out += '<div class="col-md-4">';
+							out += '<a href="Single.jsp?picID='+arr[i].picID+'">';
+							out += '<img src="'+arr[i].picID+'"+ class="img-responsive" alt="'+arr[i].tag+'" style="height: 266px; width: 400px" /></a>';
+							out += '<div class="date">';
+							out += '<table style="width: 100%;"><tr>'
+							out += '<td><span class="date-in"><i class="glyphicon glyphicon-calendar"> </i>'+arr[i].date+'</span></td>';
+							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'likes</span></td>';
+							out += '<td><a href="#" class="comments"><i class="glyphicon glyphicon-comment"></i>'+arr[i].commentCount+'</a></td></tr>';
+							out += '</table><div class="clearfix"></div><span class="date-in">'+arr[i].tag+'</span><div class="clearfix"></div>';
+							out += '<span class="date-in">'+arr[i].place+'</span><div>';
+							out += '<a href="Single.jsp?picID='+arr[i].picID+'" class="hvr-overline-from-center more">READ MORE</a><br /></div></div></div></div>';
+						}
+						if(l>0)
+							out+='<button class="btn btn-default" onClick="increaseLength()">Show More Pictures</button>';
+						else
+							out+='<h4>No More Pictures</h4>';		
+						out+='<br />'
+						document.getElementById("newest").innerHTML = out;
+					}
+					function loadPicturesTrending(){
+						var xmlhttp = new XMLHttpRequest();
+						var url = '/loadPictures?type=fame&order=-likes';
+						xmlhttp.onreadystatechange = function() {
+							if (xmlhttp.readyState % 5 == 4 && xmlhttp.status == 200) {
+								trending = JSON.parse(xmlhttp.responseText);
+								showTrending(trending);
+							}
+						}
+						xmlhttp.open("GET", url, true);
+						xmlhttp.send();
+					}
+					function showTrending(arr) {
+						var out = "";
+						var i,l=length;
+						if(length>arr.length)
+							l=arr.length;
+						for (i = 0; i < l; i++) {
+							out += '<div class="tab_img">';
+							out += '<div class="col-md-4">';
+							out += '<a href="Single.jsp?picID='+arr[i].picID+'">';
+							out += '<img src="'+arr[i].picID+'"+ class="img-responsive" alt="'+arr[i].tag+'" style="height: 266px; width: 400px" /></a>';
+							out += '<div class="date">';
+							out += '<table style="width: 100%;"><tr>'
+							out += '<td><span class="date-in"><i class="glyphicon glyphicon-calendar"> </i>'+arr[i].date+'</span></td>';
+							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'likes</span></td>';
+							out += '<td><a href="#" class="comments"><i class="glyphicon glyphicon-comment"></i>'+arr[i].commentCount+'</a></td></tr>';
+							out += '</table><div class="clearfix"></div><span class="date-in">'+arr[i].tag+'</span><div class="clearfix"></div>';
+							out += '<span class="date-in">'+arr[i].place+'</span><div>';
+							out += '<a href="Single.jsp?picID='+arr[i].picID+'" class="hvr-overline-from-center more">READ MORE</a><br /></div></div></div></div>';
+						}
+						if(l>0)
+							out+='<button class="btn btn-default" onClick="increaseLength()">Show More Pictures</button>';
+						else
+							out+='<h4>No More Pictures</h4>';		
+						out+='<br />'
+						document.getElementById("trending").innerHTML = out;
+					}
+					function loadPicturesMostViewed(){
+						var xmlhttp = new XMLHttpRequest();
+						var url = '/loadPictures?type=fame&order=-view';
+						xmlhttp.onreadystatechange = function() {
+							if (xmlhttp.readyState % 5 == 4 && xmlhttp.status == 200) {
+								viewes = JSON.parse(xmlhttp.responseText);
+								showMostViewed(viewes);
+							}
+						}
+						xmlhttp.open("GET", url, true);
+						xmlhttp.send();
+					}
+					function showMostViewed(arr) {
+						var out = "";
+						var i,l=length;
+						if(length>arr.length)
+							l=arr.length;
+						for (i = 0; i < l; i++) {
+							out += '<div class="tab_img">';
+							out += '<div class="col-md-4">';
+							out += '<a href="Single.jsp?picID='+arr[i].picID+'">';
+							out += '<img src="'+arr[i].picID+'"+ class="img-responsive" alt="'+arr[i].tag+'" style="height: 266px; width: 400px" /></a>';
+							out += '<div class="date">';
+							out += '<table style="width: 100%;"><tr>'
+							out += '<td><span class="date-in"><i class="glyphicon glyphicon-calendar"> </i>'+arr[i].date+'</span></td>';
+							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'likes</span></td>';
+							out += '<td><a href="#" class="comments"><i class="glyphicon glyphicon-comment"></i>'+arr[i].commentCount+'</a></td></tr>';
+							out += '</table><div class="clearfix"></div><span class="date-in">'+arr[i].tag+'</span><div class="clearfix"></div>';
+							out += '<span class="date-in">'+arr[i].place+'</span><div>';
+							out += '<a href="Single.jsp?picID='+arr[i].picID+'" class="hvr-overline-from-center more">READ MORE</a><br /></div></div></div></div>';
+						}
+						if(l>0)
+							out+='<button class="btn btn-default" onClick="increaseLength()">Show More Pictures</button>';
+						else
+							out+='<h4>No More Pictures</h4>';		
+						out+='<br />'
+						document.getElementById("mostViewed").innerHTML = out;
+					}					
+					</script>
 					<div class="resp-tabs-container">
-						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-							<div class="tab_img">
-								<%
-										List<PictureDetails> det = ofy().load().type(PictureDetails.class).filter("type","fame").filter("valid", true).order("-date").list();
-										Iterator<PictureDetails> pic = det.iterator();
-																while (pic.hasNext())
-																{
-																	PictureDetails pd=pic.next();
-																	String tp=pd.getType();
-									%>
-								<div class="col-md-4">
-									<a href="Single.jsp?picID=<%=pd.getPicID()%>"> <img
-										src="<%=pd.getPicID()%>" class="img-responsive" alt="<%=pd.getTag()%>"
-										style="height: 266px; width: 400px" />
-									</a>
-									<div class="date">
-										<table style="width: 100%;">
-											<tr>
-												<td><span class="date-in"><i
-														class="glyphicon glyphicon-calendar"> </i><%=timeFormat.format(pd.getDate()) %></span></td>
-												<td><span class="date-in"
-													class="glyphicon glyphicon-cross"><%=pd.getLikes()%>
-														fames</span></td>
-												<td><a href="#" class="comments"><i
-														class="glyphicon glyphicon-comment"></i><%=pd.getCommentsCount()%></a></td>
-											</tr>
-										</table>
-										<div class="clearfix"></div>
-										<span class="date-in"><%=pd.getTag() %></span>
-										<div class="clearfix"></div>
-										<span class="date-in"><%=pd.getPlace() %></span>
-										<div>
-											<a href="Single.jsp?picID=<%=pd.getPicID()%>"
-												class="hvr-overline-from-center more">READ MORE</a><br/>
-										</div>
-									</div>
-								</div>
-								<%
-										}
-									%>
-							</div>
-						</div>
-						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-							<div class="tab_img">
-								<%
-										List<PictureDetails> detTrending = ofy().load().type(PictureDetails.class).filter("type","fame").filter("valid", true).order("-likes").list();
-															Iterator<PictureDetails> picTrending = detTrending.iterator();
-																while (picTrending.hasNext())
-																{
-																	PictureDetails pd=picTrending.next();
-																	String tp=pd.getType();
-									%>
-								<div class="col-md-4">
-									<a href="Single.jsp?picID=<%=pd.getPicID()%>"> <img
-										src="<%=pd.getPicID()%>" class="img-responsive" alt="<%=pd.getTag()%>"
-										style="height: 266px; width: 400px" />
-									</a>
-									<div class="date">
-										<table style="width: 100%;">
-											<tr>
-												<td><span class="date-in"><i
-														class="glyphicon glyphicon-calendar"> </i><%=timeFormat.format(pd.getDate()) %></span></td>
-												<td><span class="date-in"
-													class="glyphicon glyphicon-cross"><%=pd.getLikes()%>
-														fames</span></td>
-												<td><a href="#" class="comments"><i
-														class="glyphicon glyphicon-comment"></i><%=pd.getCommentsCount()%></a></td>
-											</tr>
-										</table>
-										<div class="clearfix"></div>
-										<span class="date-in"><%=pd.getTag() %></span>
-										<div class="clearfix"></div>
-										<span class="date-in"><%=pd.getPlace() %></span>
-										<div>
-											<a href="Single.jsp?picID=<%=pd.getPicID()%>"
-												class="hvr-overline-from-center more">READ MORE</a><br/>
-										</div>
-									</div>
-								</div>
-								<%
-										}
-									%>
-							</div>
-						</div>
-						<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-2">
-							<div class="tab_img">
-								<%
-										List<PictureDetails> detView = ofy().load().type(PictureDetails.class).filter("type","fame").filter("valid", true).order("-view").list();
-															Iterator<PictureDetails> picView = detView.iterator();
-																while (picView.hasNext())
-																{
-																	PictureDetails pd=picView.next();
-																	String tp=pd.getType();
-									%>
-								<div class="col-md-4">
-									<a href="Single.jsp?picID=<%=pd.getPicID()%>"> <img
-										src="<%=pd.getPicID()%>" class="img-responsive" alt="<%=pd.getTag()%>"
-										style="height: 266px; width: 400px" />
-									</a>
-									<div class="date">
-										<table style="width: 100%;">
-											<tr>
-												<td><span class="date-in"><i
-														class="glyphicon glyphicon-calendar"> </i><%=timeFormat.format(pd.getDate()) %></span></td>
-												<td><span class="date-in"
-													class="glyphicon glyphicon-cross"><%=pd.getLikes()%>
-														fames</span></td>
-												<td><a href="#" class="comments"><i
-														class="glyphicon glyphicon-comment"></i><%=pd.getCommentsCount()%></a></td>
-											</tr>
-										</table>
-										<div class="clearfix"></div>
-										<span class="date-in"><%=pd.getTag() %></span>
-										<div class="clearfix"></div>
-										<span class="date-in"><%=pd.getPlace() %></span>
-										<div>
-											<a href="Single.jsp?picID=<%=pd.getPicID()%>"
-												class="hvr-overline-from-center more">READ MORE</a><br/>
-										</div>
-									</div>
-								</div>
-								<%
-										}
-									%>
-							</div>
-						</div>
+						<div class="tab-0 resp-tab-content" aria-labelledby="tab_item-0" id="newest"></div>
+						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1" id="trending"></div>
+						<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-2" id="mostViewed"></div>
 					</div>
 				</div>
 			</div>
@@ -301,8 +306,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								class="glyphicon glyphicon-home"></i> </a></li>
 						<li><a href="/shame" class="hvr-bounce-to-top">Hall of
 								Shame</a></li>
-						<li><a href="/change" class="hvr-bounce-to-top">Hall
-								of Change</a></li>
+						<li><a href="/change" class="hvr-bounce-to-top">Hall of
+								Change</a></li>
 						<li><a href="/fame" class="hvr-bounce-to-top">Hall of
 								Fame</a></li>
 						<li><a href="about.html" class="hvr-bounce-to-top">About
@@ -317,9 +322,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-2">
 					<ul class="social">
-						<li><a href="https://twitter.com/houseof_change"><i> </i></a></li>
-						<li><a href="https://www.facebook.com/pages/The-House-Of-Change/1464480190541323"><i class="facebook"> </i></a></li>
-						<li><a href="https://plus.google.com/105308104911128583880/"><i class="google"> </i></a></li>
+						<li><a href="https://twitter.com/houseof_change"><i>
+							</i></a></li>
+						<li><a
+							href="https://www.facebook.com/pages/The-House-Of-Change/1464480190541323"><i
+								class="facebook"> </i></a></li>
+						<li><a href="https://plus.google.com/105308104911128583880/"><i
+								class="google"> </i></a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>

@@ -61,8 +61,7 @@
 	String link = "summertrainingosa.appspot.com";
 %>
 <meta charset="utf-8">
-<meta name="description"
-	content="<%=desc %>">
+<meta name="description" content="<%=desc %>">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Sociolizers">
 <title><%= tag %></title>
@@ -111,7 +110,13 @@
 <meta name="keywords"
 	content="<%= tag %> <%= desc %> <%= showDate %> <% %>" />
 <script type="application/x-javascript">
+	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
+
 </script>
 <script>
 	(function(i, s, o, g, r, a, m) {
@@ -229,7 +234,9 @@
 									UserDetails ud = ofy().load().type(UserDetails.class).id(pd.getClaimID()).now();
 								%>
 								<tr>
-									<td><a href="#"><span class="date-in">Claimed By: <%= ud.getName() %> (ID: <%=pd.getClaimID() %>)</span></a></td>
+									<td><a href="#"><span class="date-in">Claimed
+												By: <%= ud.getName() %> (ID: <%=pd.getClaimID() %>)
+										</span></a></td>
 								</tr>
 								<%
 								}
@@ -253,44 +260,74 @@
 					</div>
 				</div>
 				<div class="single-bottom" style="width: 150%">
-					<h3>Comments</h3>
-					<%
-					List <Comments> ls = ofy().load().type(Comments.class).filter("picID",picID).order("-date").list();
-					Iterator<Comments> c = ls.iterator();
-					while(c.hasNext())
-					{
-						Comments cd = c.next();
-				
-					%>
-					<br /> <br />
-					<h4>
-						<b><%= cd.getName() %></b>
-					</h4>
-					<p><%= cd.getComments() %></p>
-					<% if(cd.getuID().equals((String)session.getAttribute("uID")))
+					<script>
+						var length = 2;
+						var l;
+						var myArr;
+						loadComment();
+						function increaseLength()
 						{
-					%>
-					<form action="/deletecomment" method="post">
-						<input type="submit" value="Delete"> <input type="hidden"
-							name="picID" value="<%=cd.getPicID()%>"> <input
-							type="hidden" name="uID" value="<%=cd.getuID()%>"> <input
-							type="hidden" name="comment" value="<%=cd.getComments()%>">
-					</form>
+							length+=2;
+							load(myArr)
+						}
+						function loadComment(){
+							var xmlhttp = new XMLHttpRequest();
+							var url = '/loadComment?picID='+'<%=picID%>';
+							xmlhttp.onreadystatechange = function() {
+								if (xmlhttp.readyState % 5 == 4 && xmlhttp.status == 200) {
+									myArr = JSON.parse(xmlhttp.responseText);
+									load(myArr);
+								}
+							}
+							xmlhttp.open("GET", url, true);
+							xmlhttp.send();
+						}
+						function load(arr) {
+							var out = "";
+							var i,l=length;
+							if(length>arr.length)
+								l=arr.length;
+							for (i = 0; i < l; i++) {
+								out += '<h4><b>'+arr[i].name+'</b></h4><p>'+arr[i].comment+'</p>';
+								if(arr[i].uID=='<%=uID%>')
+									out += '<form action="/deletecomment" method="post"> <input type="submit" value="Delete"> <input type="hidden" name="picID" value="'+'<%=picID%>'+'"> <input type="hidden" name="uID" value="'+'<%=uID%>'+'"> <input type="hidden" name="comment" value="'+arr[i].comment+'"></form><br />';
+							}
+							if(l>0)
+								out+='<button class="btn btn-default" onClick="increaseLength()">Show More Comments</button>';
+							else
+								out+='<h4>No More Comments</h4>';		
+							out+='<br />'
+							document.getElementById("commentBox").innerHTML = out;
+						}
+						function addComment()
+						{
+							var comment = document.getElementById("commentBody").value;
+							console.log(comment);
+							document.getElementById("commentBody").value = "";
+							var xmlhttp = new XMLHttpRequest();
+							var url = '/comment?picID='+'<%=picID%>'+'&comment=' + comment;
+							xmlhttp.open("GET", url, true);
+							xmlhttp.send();
+							loadComment();
+							load(myArr);
+						}
+						function deleteComment() {
+
+						}
+					</script>
+					<h3>Comments</h3>
+					<br />
+					<div id="commentBox"></div>
 					<div class="clearfix"></div>
 					<%
-						}
-					}
 					if(session.getAttribute("uID")!=null)
 					{
 					%>
 					<h3>Leave A Comment</h3>
-					<form action="/comment" method="post">
-						<div class="clearfix"></div>
-						<textarea placeholder="Enter Comment" rows="2" cols="100"
-							name="comment" style="color: #000; background: #fff"></textarea>
-						<input type="hidden" value="<%= picID %>" name="picID"> <input
-							type="submit" value="Send">
-					</form>
+					<div class="clearfix"></div>
+					<textarea id="commentBody" placeholder="Enter Comment" rows="2"
+						cols="100" name="comment" style="color: #000; background: #fff"></textarea>
+					<button class="btn btn-default" onClick="addComment()">Submit</button>
 					<%
 					}
 					else
