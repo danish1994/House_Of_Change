@@ -292,8 +292,10 @@
 								if(arr[i].uID=='<%=uID%>')
 									out += '<form action="/deletecomment" method="post"> <input type="submit" value="Delete"> <input type="hidden" name="picID" value="'+'<%=picID%>'+'"> <input type="hidden" name="uID" value="'+'<%=uID%>'+'"> <input type="hidden" name="comment" value="'+arr[i].comment+'"></form><br />';
 							}
-							if(l>0)
+							if(l>0&&l<arr.length)
 								out+='<button class="btn btn-default" onClick="increaseLength()">Show More Comments</button>';
+							else if(l==arr.length)
+								out+='<h4>No More Comments</h4>';
 							else
 								out+='<h4>No More Comments</h4>';		
 							out+='<br />'
