@@ -40,7 +40,7 @@
 	})(window, document, 'script', '//www.google-analytics.com/analytics.js',
 			'ga');
 
-	ga('create', 'UA-65737991-1', 'auto');
+	ga('create', 'UA-65737991-2', 'auto');
 	ga('send', 'pageview');
 </script>
 <!--flexslider-->
