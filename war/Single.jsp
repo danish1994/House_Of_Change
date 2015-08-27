@@ -310,8 +310,11 @@
 							var url = '/comment?picID='+'<%=picID%>'+'&comment=' + comment;
 							xmlhttp.open("GET", url, true);
 							xmlhttp.send();
-							loadComment();
-							load(myArr);
+							xmlhttp.onreadystatechange = function() {
+								if (xmlhttp.readyState % 5 == 4 && xmlhttp.status == 200) {
+									loadComment();
+								}
+							}
 						}
 						function deleteComment() {
 
