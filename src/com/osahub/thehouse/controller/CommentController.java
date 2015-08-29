@@ -25,13 +25,12 @@ public class CommentController extends HttpServlet {
 		String name = (String) session.getAttribute("Name");
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
-		//Primary Key
+		// Primary Key
 		String id = dateFormat.format(date);
-		//Save Comment
-		save(picID, comm, uID, name, id + uID + picID,date);
+		// Save Comment
+		save(picID, comm, uID, name, id + uID, date);
 		commentCount(picID);
 		System.out.println("Comment Saved");
-		//res.sendRedirect("Single.jsp?picID=" + picID);
 	}
 
 }

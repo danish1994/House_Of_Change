@@ -18,6 +18,8 @@ public class Comments {
 	String id;
 	@Index
 	Date date;
+	@Index
+	boolean valid;
 	public Comments() {
 		super();
 	}
@@ -30,6 +32,13 @@ public class Comments {
 		this.name = name;
 		this.id = id;
 		this.date = date;
+		valid = true;
+	}
+	public boolean isValid() {
+		return valid;
+	}
+	public void setValid(boolean valid) {
+		this.valid = valid;
 	}
 	public String getPicID() {
 		return picID;

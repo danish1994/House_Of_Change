@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.osahub.thehouse.entity.Comments;
-
+import static com.osahub.thehouse.dao.PictureDetailsDao.commentMinus;
 import static com.osahub.thehouse.dao.OfyService.ofy;
 
 public class CommentsDao {
@@ -18,15 +18,11 @@ public class CommentsDao {
 	}
 
 	//Delete Comment
-	public static void delete(String picID, String uID,String comment) {
-		List<Comments> com = ofy().load().type(Comments.class).filter("comments", comment).filter("uID", uID).filter("picID",picID).list();
-		Iterator<Comments> c = com.iterator();
-		while(c.hasNext())
-		{
-			Comments cd = c.next();
-			ofy().delete().entity(cd).now();
-		}
-	
+	public static void delete(String id) {
+		Comments c = ofy().load().type(Comments.class).id(id).now();
+		commentMinus(c.getPicID());
+		c.setValid(false);
+		ofy().save().entity(c).now();
 	}
 
 	//Modify Name in Comment

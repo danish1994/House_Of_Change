@@ -264,6 +264,7 @@
 						var length = 2;
 						var l;
 						var myArr;
+						var id;
 						loadComment();
 						function increaseLength()
 						{
@@ -290,7 +291,7 @@
 							for (i = 0; i < l; i++) {
 								out += '<h4><b>'+arr[i].name+'</b></h4><p>'+arr[i].comment+'</p>';
 								if(arr[i].uID=='<%=uID%>')
-									out += '<form action="/deletecomment" method="post"> <input type="submit" value="Delete"> <input type="hidden" name="picID" value="'+'<%=picID%>'+'"> <input type="hidden" name="uID" value="'+'<%=uID%>'+'"> <input type="hidden" name="comment" value="'+arr[i].comment+'"></form><br />';
+									out += '<button class="btn btn-default" id="'+arr[i].id+'" onClick="deleteComment(this.id)">Delete</button><br />';
 							}
 							if(l>0&&l<arr.length)
 								out+='<button class="btn btn-default" onClick="increaseLength()">Show More Comments</button>';
@@ -316,8 +317,17 @@
 								}
 							}
 						}
-						function deleteComment() {
-
+						function deleteComment(id)
+						{
+							var xmlhttpDelete = new XMLHttpRequest();
+							var url = '/deleteComment?id='+id;
+							xmlhttpDelete.onreadystatechange = function() {
+								if (xmlhttpDelete.readyState == 4 && xmlhttpDelete.status == 200) {
+									loadComment();
+								}
+							}
+							xmlhttpDelete.open("GET", url, true);
+							xmlhttpDelete.send();
 						}
 					</script>
 					<h3>Comments</h3>
@@ -330,7 +340,7 @@
 					%>
 					<h3>Leave A Comment</h3>
 					<div class="clearfix"></div>
-					<textarea id="commentBody" placeholder="Enter Comment" rows="2"
+					<textarea required id="commentBody" placeholder="Enter Comment" rows="2"
 						cols="100" name="comment" style="color: #000; background: #fff"></textarea>
 					<button class="btn btn-default" onClick="addComment()">Submit</button>
 					<%

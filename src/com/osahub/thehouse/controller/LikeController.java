@@ -32,7 +32,7 @@ public class LikeController extends HttpServlet {
 						"yyyy/MM/dd HH:mm:ss");
 				Date date = new Date();
 				String id = dateFormat.format(date);
-				addLike(picID, uID, id + uID + picID);
+				addLike(picID, uID, id + uID);
 			} else if (likeStatus.equals("yes")) {
 				likeMinus(picID);
 				removeLike(picID, uID);
