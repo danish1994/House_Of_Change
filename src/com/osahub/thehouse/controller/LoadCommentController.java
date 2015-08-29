@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.osahub.thehouse.entity.Comments;
+import com.osahub.thehouse.entity.PictureDetails;
 
 import static com.osahub.thehouse.dao.OfyService.ofy;
 
@@ -20,6 +22,16 @@ public class LoadCommentController extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res) {
 		String picID = req.getParameter("picID");
 		JSONArray jArray = new JSONArray();
+		PictureDetails pc = ofy().load().type(PictureDetails.class).id(picID).now();
+		JSONObject count = new JSONObject();
+		try {
+			count.put("like",pc.getLikes());
+			count.put("comment", pc.getCommentsCount());
+			count.put("type", pc.getType());
+		} catch (JSONException e1) {
+			e1.printStackTrace();
+		}
+		jArray.put(count);
 		List<Comments> ls = ofy().load().type(Comments.class).filter("picID",picID).filter("valid",true).order("-date").list();
 		Iterator<Comments> it = ls.iterator();
 		while (it.hasNext()) {

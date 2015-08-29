@@ -212,10 +212,9 @@
 								<tr>
 									<td><span class="date-in"><i
 											class="glyphicon glyphicon-calendar"><%= showDate %></i></span></td>
-									<td><a href="<%=likeLink %>"> <span class="date-in"
-											class="glyphicon glyphicon-cross"> <%= like %> <%=likeType %></span></a></td>
-									<td><a href="#" class="comments"><i
-											class="glyphicon glyphicon-comment"></i><%= comments%></a></td>
+									<td><button class="btn btn-default btn-sm" id="likeCount" onClick="modifyLike()"></button></td>
+									<td><a href="#" class="comments" id="commentCount"><i
+											class="glyphicon glyphicon-comment"></i></a></td>
 								</tr>
 								<br />
 								<br />
@@ -288,7 +287,7 @@
 							var i,l=length;
 							if(length>arr.length)
 								l=arr.length;
-							for (i = 0; i < l; i++) {
+							for (i = 1; i < l; i++) {
 								out += '<h4><b>'+arr[i].name+'</b></h4><p>'+arr[i].comment+'</p>';
 								if(arr[i].uID=='<%=uID%>')
 									out += '<button class="btn btn-default" id="'+arr[i].id+'" onClick="deleteComment(this.id)">Delete</button><br />';
@@ -300,7 +299,15 @@
 							else
 								out+='<h4>No More Comments</h4>';		
 							out+='<br />'
+							var type;
+							if(arr[0].type=='change')
+								type='like';
+							else
+								type = arr[0].type;
 							document.getElementById("commentBox").innerHTML = out;
+							document.getElementById("likeCount").innerHTML = arr[0].like+' '+type+'s';
+							document.getElementById("commentCount").innerHTML = '<i class="glyphicon glyphicon-comment"></i>'+arr[0].comment;
+							
 						}
 						function addComment()
 						{
@@ -324,6 +331,29 @@
 							xmlhttpDelete.onreadystatechange = function() {
 								if (xmlhttpDelete.readyState == 4 && xmlhttpDelete.status == 200) {
 									loadComment();
+								}
+							}
+							xmlhttpDelete.open("GET", url, true);
+							xmlhttpDelete.send();
+						}
+						function modifyLike()
+						{
+							var xmlhttpDelete = new XMLHttpRequest();
+							var url = '/modifyLike?picID='+'<%=picID%>';
+							xmlhttpDelete.onreadystatechange = function() {
+								if (xmlhttpDelete.readyState == 4 && xmlhttpDelete.status == 200) {
+									var arr = JSON.parse(xmlhttp.responseText);
+									var type;
+									var status = arr[i].status;
+									if(arr[0].type=='change')
+										type='like';
+									else
+										type = arr[0].type;
+									if(status=='true')
+										type = 'un'+type;
+									else
+										type = type+'s';
+									document.getElementById("likeCount").innerHTML = arr[0].like+' '+type;		
 								}
 							}
 							xmlhttpDelete.open("GET", url, true);
