@@ -14,7 +14,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.osahub.thehouse.entity.Comments;
-import com.osahub.thehouse.entity.Like;
 import com.osahub.thehouse.entity.PictureDetails;
 
 import static com.osahub.thehouse.dao.OfyService.ofy;
@@ -37,8 +36,8 @@ public class LoadPicturesController extends HttpServlet{
 				picDetails.put("picID", pc.getPicID());
 				picDetails.put("tag", pc.getTag());
 				picDetails.put("date", timeFormat.format(pc.getDate()));
-				picDetails.put("likes", ofy().load().type(Like.class).filter("picID",pc.getPicID()).count());
-				picDetails.put("commentCount", ofy().load().type(Comments.class).filter("picID",pc.getPicID()).count());
+				picDetails.put("likes", pc.getLikes());
+				picDetails.put("commentCount", ofy().load().type(Comments.class).filter("picID",pc.getPicID()).filter("valid", true).count());
 				picDetails.put("place", pc.getPlace());
 			} catch (Exception e) {
 				e.printStackTrace();
