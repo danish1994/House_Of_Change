@@ -338,8 +338,7 @@
 						function modifyLike()
 						{
 							var xmlhttpDelete = new XMLHttpRequest();
-							var picID = '<%=picID%>
-						';
+							var picID = '<%=picID%>';
 							var url = '/like?picID=' + picID;
 							xmlhttpDelete.onreadystatechange = function() {
 								if (xmlhttpDelete.readyState == 4
