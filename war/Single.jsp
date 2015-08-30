@@ -212,7 +212,8 @@
 								<tr>
 									<td><span class="date-in"><i
 											class="glyphicon glyphicon-calendar"><%= showDate %></i></span></td>
-									<td><button class="btn btn-default btn-sm" id="likeCount" onClick="modifyLike()"></button></td>
+									<td><button class="btn btn-default btn-sm" id="likeCount"
+											onClick="modifyLike()"></button></td>
 									<td><a href="#" class="comments" id="commentCount"><i
 											class="glyphicon glyphicon-comment"></i></a></td>
 								</tr>
@@ -308,14 +309,17 @@
 						{
 							var comment = document.getElementById("commentBody").value;
 							console.log(comment);
-							document.getElementById("commentBody").value = "";
-							var xmlhttp = new XMLHttpRequest();
-							var url = '/comment?picID='+'<%=picID%>'+'&comment=' + comment;
-							xmlhttp.open("GET", url, true);
-							xmlhttp.send();
-							xmlhttp.onreadystatechange = function() {
-								if (xmlhttp.readyState % 5 == 4 && xmlhttp.status == 200) {
-									loadComment();
+							if(comment!="")
+							{
+								document.getElementById("commentBody").value = "";
+								var xmlhttp = new XMLHttpRequest();
+								var url = '/comment?picID='+'<%=picID%>'+'&comment=' + comment;
+								xmlhttp.open("GET", url, true);
+								xmlhttp.send();
+								xmlhttp.onreadystatechange = function() {
+									if (xmlhttp.readyState % 5 == 4 && xmlhttp.status == 200) {
+										loadComment();
+									}
 								}
 							}
 						}
@@ -334,13 +338,17 @@
 						function modifyLike()
 						{
 							var xmlhttpDelete = new XMLHttpRequest();
-							var picID = '<%=picID%>';
-							var url = '/like?picID='+picID;
+							var picID = '<%=picID%>
+						';
+							var url = '/like?picID=' + picID;
 							xmlhttpDelete.onreadystatechange = function() {
-								if (xmlhttpDelete.readyState == 4 && xmlhttpDelete.status == 200) {
-									var arr = JSON.parse(xmlhttpDelete.responseText);
-									if(arr[0].likeType!='none')
-										document.getElementById("likeCount").innerHTML = arr[0].likeCount+' '+arr[0].likeType;
+								if (xmlhttpDelete.readyState == 4
+										&& xmlhttpDelete.status == 200) {
+									var arr = JSON
+											.parse(xmlhttpDelete.responseText);
+									if (arr[0].likeType != 'none')
+										document.getElementById("likeCount").innerHTML = arr[0].likeCount
+												+ ' ' + arr[0].likeType;
 								}
 							}
 							xmlhttpDelete.open("GET", url, true);
@@ -357,9 +365,12 @@
 					%>
 					<h3>Leave A Comment</h3>
 					<div class="clearfix"></div>
-					<textarea required id="commentBody" placeholder="Enter Comment" rows="2"
-						cols="100" name="comment" style="color: #000; background: #fff"></textarea>
-					<button class="btn btn-default" onClick="addComment()">Submit</button>
+					<form>
+						<textarea required id="commentBody" placeholder="Enter Comment"
+							rows="2" cols="100" name="comment"
+							style="color: #000; background: #fff"></textarea>
+						<button class="btn btn-default" onClick="addComment()">Submit</button>
+					</form>
 					<%
 					}
 					else
