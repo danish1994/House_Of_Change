@@ -299,15 +299,10 @@
 							else
 								out+='<h4>No More Comments</h4>';		
 							out+='<br />'
-							var type;
-							if(arr[0].type=='change')
-								type='like';
-							else
-								type = arr[0].type;
+							var type = '<%=likeType%>';
 							document.getElementById("commentBox").innerHTML = out;
-							document.getElementById("likeCount").innerHTML = arr[0].like+' '+type+'s';
+							document.getElementById("likeCount").innerHTML = arr[0].like+' '+type;
 							document.getElementById("commentCount").innerHTML = '<i class="glyphicon glyphicon-comment"></i>'+arr[0].comment;
-							
 						}
 						function addComment()
 						{
@@ -339,21 +334,13 @@
 						function modifyLike()
 						{
 							var xmlhttpDelete = new XMLHttpRequest();
-							var url = '/modifyLike?picID='+'<%=picID%>';
+							var picID = '<%=picID%>';
+							var url = '/like?picID='+picID;
 							xmlhttpDelete.onreadystatechange = function() {
 								if (xmlhttpDelete.readyState == 4 && xmlhttpDelete.status == 200) {
-									var arr = JSON.parse(xmlhttp.responseText);
-									var type;
-									var status = arr[i].status;
-									if(arr[0].type=='change')
-										type='like';
-									else
-										type = arr[0].type;
-									if(status=='true')
-										type = 'un'+type;
-									else
-										type = type+'s';
-									document.getElementById("likeCount").innerHTML = arr[0].like+' '+type;		
+									var arr = JSON.parse(xmlhttpDelete.responseText);
+									if(arr[0].likeType!='none')
+										document.getElementById("likeCount").innerHTML = arr[0].likeCount+' '+arr[0].likeType;
 								}
 							}
 							xmlhttpDelete.open("GET", url, true);

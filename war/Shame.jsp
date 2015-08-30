@@ -196,7 +196,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							out += '<div class="date">';
 							out += '<table style="width: 100%;"><tr>'
 							out += '<td><span class="date-in"><i class="glyphicon glyphicon-calendar"> </i>'+arr[i].date+'</span></td>';
-							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'likes</span></td>';
+							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'shames</span></td>';
 							out += '<td><a href="#" class="comments"><i class="glyphicon glyphicon-comment"></i>'+arr[i].commentCount+'</a></td></tr>';
 							out += '</table><div class="clearfix"></div><span class="date-in">'+arr[i].tag+'</span><div class="clearfix"></div>';
 							out += '<span class="date-in">'+arr[i].place+'</span><div>';
@@ -236,7 +236,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							out += '<div class="date">';
 							out += '<table style="width: 100%;"><tr>'
 							out += '<td><span class="date-in"><i class="glyphicon glyphicon-calendar"> </i>'+arr[i].date+'</span></td>';
-							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'likes</span></td>';
+							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'shames</span></td>';
 							out += '<td><a href="#" class="comments"><i class="glyphicon glyphicon-comment"></i>'+arr[i].commentCount+'</a></td></tr>';
 							out += '</table><div class="clearfix"></div><span class="date-in">'+arr[i].tag+'</span><div class="clearfix"></div>';
 							out += '<span class="date-in">'+arr[i].place+'</span><div>';
@@ -276,7 +276,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							out += '<div class="date">';
 							out += '<table style="width: 100%;"><tr>'
 							out += '<td><span class="date-in"><i class="glyphicon glyphicon-calendar"> </i>'+arr[i].date+'</span></td>';
-							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'likes</span></td>';
+							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'shames</span></td>';
 							out += '<td><a href="#" class="comments"><i class="glyphicon glyphicon-comment"></i>'+arr[i].commentCount+'</a></td></tr>';
 							out += '</table><div class="clearfix"></div><span class="date-in">'+arr[i].tag+'</span><div class="clearfix"></div>';
 							out += '<span class="date-in">'+arr[i].place+'</span><div>';

@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.osahub.thehouse.entity.Comments;
+import com.osahub.thehouse.entity.Like;
 import com.osahub.thehouse.entity.PictureDetails;
 
 import static com.osahub.thehouse.dao.OfyService.ofy;
@@ -24,10 +25,12 @@ public class LoadCommentController extends HttpServlet {
 		JSONArray jArray = new JSONArray();
 		PictureDetails pc = ofy().load().type(PictureDetails.class).id(picID).now();
 		JSONObject count = new JSONObject();
+		int like = ofy().load().type(Like.class).filter("picID", picID).count();
+		pc.setLikes(like);
+		ofy().save().entity(pc).now();
 		try {
-			count.put("like",pc.getLikes());
+			count.put("like",like);
 			count.put("comment", pc.getCommentsCount());
-			count.put("type", pc.getType());
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}

@@ -109,7 +109,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Like</servlet-name>
-		<url-pattern>/likeController</url-pattern>
+		<url-pattern>/like</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
