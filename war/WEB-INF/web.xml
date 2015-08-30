@@ -203,6 +203,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>Repair</servlet-name>
+		<servlet-class>com.osahub.thehouse.controller.Repair</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Repair</servlet-name>
+		<url-pattern>/repair</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>Fame</servlet-name>
 		<jsp-file>/Fame.jsp</jsp-file>
 	</servlet>
