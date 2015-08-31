@@ -189,7 +189,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						if(length>arr.length)
 							l=arr.length;
 						for (i = 0; i < l; i++) {
-							out += '<div class="tab_img">';
 							out += '<div class="col-md-4">';
 							out += '<a href="Single.jsp?picID='+arr[i].picID+'">';
 							out += '<img src="'+arr[i].picID+'"+ class="img-responsive" alt="'+arr[i].tag+'" style="height: 266px; width: 400px" /></a>';
@@ -200,7 +199,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							out += '<td><a href="#" class="comments"><i class="glyphicon glyphicon-comment"></i>'+arr[i].commentCount+'</a></td></tr>';
 							out += '</table><div class="clearfix"></div><span class="date-in">'+arr[i].tag+'</span><div class="clearfix"></div>';
 							out += '<span class="date-in">'+arr[i].place+'</span><div>';
-							out += '<a href="Single.jsp?picID='+arr[i].picID+'" class="hvr-overline-from-center more">READ MORE</a><br /></div></div></div></div>';
+							out += '<a href="Single.jsp?picID='+arr[i].picID+'" class="hvr-overline-from-center more">READ MORE</a><br /></div></div></div>';
 						}
 						if(l>0&&l<arr.lenght)
 							out+='<button class="btn btn-default" onClick="increaseLength()">Show More Pictures</button>';
@@ -229,7 +228,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						if(length>arr.length)
 							l=arr.length;
 						for (i = 0; i < l; i++) {
-							out += '<div class="tab_img">';
 							out += '<div class="col-md-4">';
 							out += '<a href="Single.jsp?picID='+arr[i].picID+'">';
 							out += '<img src="'+arr[i].picID+'"+ class="img-responsive" alt="'+arr[i].tag+'" style="height: 266px; width: 400px" /></a>';
@@ -240,7 +238,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							out += '<td><a href="#" class="comments"><i class="glyphicon glyphicon-comment"></i>'+arr[i].commentCount+'</a></td></tr>';
 							out += '</table><div class="clearfix"></div><span class="date-in">'+arr[i].tag+'</span><div class="clearfix"></div>';
 							out += '<span class="date-in">'+arr[i].place+'</span><div>';
-							out += '<a href="Single.jsp?picID='+arr[i].picID+'" class="hvr-overline-from-center more">READ MORE</a><br /></div></div></div></div>';
+							out += '<a href="Single.jsp?picID='+arr[i].picID+'" class="hvr-overline-from-center more">READ MORE</a><br /></div></div></div>';
 						}
 						if(l>0&&l<arr.length)
 							out+='<button class="btn btn-default" onClick="increaseLength()">Show More Pictures</button>';
@@ -269,7 +267,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						if(length>arr.length)
 							l=arr.length;
 						for (i = 0; i < l; i++) {
-							out += '<div class="tab_img">';
 							out += '<div class="col-md-4">';
 							out += '<a href="Single.jsp?picID='+arr[i].picID+'">';
 							out += '<img src="'+arr[i].picID+'"+ class="img-responsive" alt="'+arr[i].tag+'" style="height: 266px; width: 400px" /></a>';
@@ -280,7 +277,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							out += '<td><a href="#" class="comments"><i class="glyphicon glyphicon-comment"></i>'+arr[i].commentCount+'</a></td></tr>';
 							out += '</table><div class="clearfix"></div><span class="date-in">'+arr[i].tag+'</span><div class="clearfix"></div>';
 							out += '<span class="date-in">'+arr[i].place+'</span><div>';
-							out += '<a href="Single.jsp?picID='+arr[i].picID+'" class="hvr-overline-from-center more">READ MORE</a><br /></div></div></div></div>';
+							out += '<a href="Single.jsp?picID='+arr[i].picID+'" class="hvr-overline-from-center more">READ MORE</a><br /></div></div></div>';
 						}
 						if(l>0&&l<arr.length)
 							out+='<button class="btn btn-default" onClick="increaseLength()">Show More Pictures</button>';
