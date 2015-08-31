@@ -364,12 +364,10 @@
 					%>
 					<h3>Leave A Comment</h3>
 					<div class="clearfix"></div>
-					<form>
-						<textarea required id="commentBody" placeholder="Enter Comment"
-							rows="2" cols="100" name="comment"
-							style="color: #000; background: #fff"></textarea>
-						<button class="btn btn-default" onClick="addComment()">Submit</button>
-					</form>
+					<textarea id="commentBody" placeholder="Enter Comment"
+						rows="2" cols="100" name="comment"
+						style="color: #000; background: #fff"></textarea>
+					<button class="btn btn-default" onClick="addComment()">Submit</button>
 					<%
 					}
 					else
