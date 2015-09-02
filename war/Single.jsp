@@ -22,7 +22,7 @@
 	String type = pd.getType();
 	String tag = pd.getTag();
 	Date date = pd.getDate();
-	int like = pd.getLikes();
+	int like = ofy().load().type(Like.class).filter("picID",picID).count();
 	int comments = ofy().load().type(Comments.class).filter("picID",picID).count();
 	String likeStatus = "no";
 	String likeType = null;
