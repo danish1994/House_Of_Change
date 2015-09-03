@@ -67,11 +67,11 @@
 					<ul>
 						<li><a href="index.html" class="color"><i
 								class="glyphicon glyphicon-home"></i> </a></li>
-						<li><a href="/shame" class="hvr-bounce-to-top">Hall of
+						<li><a href="/shame.html" class="hvr-bounce-to-top">Hall of
 								Shame</a></li>
-						<li><a href="/change" class="hvr-bounce-to-top">Hall of
+						<li><a href="/change.html" class="hvr-bounce-to-top">Hall of
 								Change</a></li>
-						<li><a href="/fame" class="hvr-bounce-to-top">Hall of
+						<li><a href="/fame.html" class="hvr-bounce-to-top">Hall of
 								Fame</a></li>
 						<li><a href="about.html" class="hvr-bounce-to-top">About
 						</a></li>
@@ -159,11 +159,11 @@
 					<ul>
 						<li><a href="index.html" class="color"><i
 								class="glyphicon glyphicon-home"></i> </a></li>
-						<li><a href="/shame" class="hvr-bounce-to-top">Hall of
+						<li><a href="/shame.html" class="hvr-bounce-to-top">Hall of
 								Shame</a></li>
-						<li><a href="/change" class="hvr-bounce-to-top">Hall of
+						<li><a href="/change.html" class="hvr-bounce-to-top">Hall of
 								Change</a></li>
-						<li><a href="/fame" class="hvr-bounce-to-top">Hall of
+						<li><a href="/fame.html" class="hvr-bounce-to-top">Hall of
 								Fame</a></li>
 						<li><a href="about.html" class="hvr-bounce-to-top">About
 						</a></li>

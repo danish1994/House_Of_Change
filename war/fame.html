@@ -1,22 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ page import="com.osahub.thehouse.entity.PictureDetails"%>
-<%@ page import="java.util.Iterator"%>
-<%@ page import="java.util.List"%>
-<%@ page import="java.util.Date"%>
-<%@ page import="java.text.DateFormat"%>
-<%@ page import="java.text.SimpleDateFormat"%>
-<%@ page import="static com.osahub.thehouse.dao.OfyService.ofy"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<% DateFormat timeFormat = new SimpleDateFormat("dd/MM/YYYY"); %>
 <meta charset="utf-8">
 <meta name="description"
 	content="We are here to bring a change in the Society">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Sociolizers">
-<title>Hall of Change</title>
+<title>Hall of Fame</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -80,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 	<!--header-->
-	<div class="header-change">
+	<div class="header-fame">
 		<div class="container">
 			<div class="header-top">
 				<div class="top-nav">
@@ -89,11 +79,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul>
 						<li><a href="index.html" class="color"><i
 								class="glyphicon glyphicon-home"></i> </a></li>
-						<li><a href="/shame" class="hvr-bounce-to-top">Hall of
+						<li><a href="/shame.html" class="hvr-bounce-to-top">Hall of
 								Shame</a></li>
-						<li><a href="/change" class="hvr-bounce-to-top">Hall of
+						<li><a href="/change.html" class="hvr-bounce-to-top">Hall of
 								Change</a></li>
-						<li><a href="/fame" class="hvr-bounce-to-top">Hall of
+						<li><a href="/fame.html" class="hvr-bounce-to-top">Hall of
 								Fame</a></li>
 						<li><a href="about.html" class="hvr-bounce-to-top">About
 						</a></li>
@@ -143,7 +133,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="portfolio">
 		<div class="container">
 			<div class="portfolio-top ">
-				<h1>Hall of Change</h1>
+				<h1>Hall of Fame</h1>
 			</div>
 			<div class="sap_tabs">
 
@@ -173,7 +163,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					}
 					function loadPicturesNewest(){
 						var xmlhttp = new XMLHttpRequest();
-						var url = '/loadPictures?type=change&order=-date';
+						var url = '/loadPictures?type=fame&order=-date';
 						xmlhttp.onreadystatechange = function() {
 							if (xmlhttp.readyState % 5 == 4 && xmlhttp.status == 200) {
 								newest = JSON.parse(xmlhttp.responseText);
@@ -195,24 +185,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							out += '<div class="date">';
 							out += '<table style="width: 100%;"><tr>'
 							out += '<td><span class="date-in"><i class="glyphicon glyphicon-calendar"> </i>'+arr[i].date+'</span></td>';
-							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'likes</span></td>';
+							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'fames</span></td>';
 							out += '<td><a href="#" class="comments"><i class="glyphicon glyphicon-comment"></i>'+arr[i].commentCount+'</a></td></tr>';
 							out += '</table><div class="clearfix"></div><span class="date-in">'+arr[i].tag+'</span><div class="clearfix"></div>';
 							out += '<span class="date-in">'+arr[i].place+'</span><div>';
 							out += '<a href="Single.jsp?picID='+arr[i].picID+'" class="hvr-overline-from-center more">READ MORE</a><br /></div></div></div>';
 						}
-						if(l>0&&l<arr.length)
+						if(l>0&&l<arr.lenght)
 							out+='<button class="btn btn-default" onClick="increaseLength()">Show More Pictures</button>';
 						else if(l==arr.length)
 							out+='<h4>No More Pictures</h4>';
 						else
-							out+='<h4>No More Pictures</h4>';
+							out+='<h4>No More Pictures</h4>';		
 						out+='<br />'
 						document.getElementById("newest").innerHTML = out;
 					}
 					function loadPicturesTrending(){
 						var xmlhttp = new XMLHttpRequest();
-						var url = '/loadPictures?type=change&order=-likes';
+						var url = '/loadPictures?type=fame&order=-likes';
 						xmlhttp.onreadystatechange = function() {
 							if (xmlhttp.readyState % 5 == 4 && xmlhttp.status == 200) {
 								trending = JSON.parse(xmlhttp.responseText);
@@ -234,7 +224,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							out += '<div class="date">';
 							out += '<table style="width: 100%;"><tr>'
 							out += '<td><span class="date-in"><i class="glyphicon glyphicon-calendar"> </i>'+arr[i].date+'</span></td>';
-							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'likes</span></td>';
+							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'fames</span></td>';
 							out += '<td><a href="#" class="comments"><i class="glyphicon glyphicon-comment"></i>'+arr[i].commentCount+'</a></td></tr>';
 							out += '</table><div class="clearfix"></div><span class="date-in">'+arr[i].tag+'</span><div class="clearfix"></div>';
 							out += '<span class="date-in">'+arr[i].place+'</span><div>';
@@ -251,7 +241,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					}
 					function loadPicturesMostViewed(){
 						var xmlhttp = new XMLHttpRequest();
-						var url = '/loadPictures?type=change&order=-view';
+						var url = '/loadPictures?type=fame&order=-view';
 						xmlhttp.onreadystatechange = function() {
 							if (xmlhttp.readyState % 5 == 4 && xmlhttp.status == 200) {
 								viewes = JSON.parse(xmlhttp.responseText);
@@ -273,7 +263,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							out += '<div class="date">';
 							out += '<table style="width: 100%;"><tr>'
 							out += '<td><span class="date-in"><i class="glyphicon glyphicon-calendar"> </i>'+arr[i].date+'</span></td>';
-							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'likes</span></td>';
+							out += '<td><span class="date-in" class="glyphicon glyphicon-cross">'+arr[i].likes+'fames</span></td>';
 							out += '<td><a href="#" class="comments"><i class="glyphicon glyphicon-comment"></i>'+arr[i].commentCount+'</a></td></tr>';
 							out += '</table><div class="clearfix"></div><span class="date-in">'+arr[i].tag+'</span><div class="clearfix"></div>';
 							out += '<span class="date-in">'+arr[i].place+'</span><div>';
@@ -307,11 +297,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul>
 						<li><a href="index.html" class="color"><i
 								class="glyphicon glyphicon-home"></i> </a></li>
-						<li><a href="/shame" class="hvr-bounce-to-top">Hall of
+						<li><a href="/shame.html" class="hvr-bounce-to-top">Hall of
 								Shame</a></li>
-						<li><a href="/change" class="hvr-bounce-to-top">Hall of
+						<li><a href="/change.html" class="hvr-bounce-to-top">Hall of
 								Change</a></li>
-						<li><a href="/fame" class="hvr-bounce-to-top">Hall of
+						<li><a href="/fame.html" class="hvr-bounce-to-top">Hall of
 								Fame</a></li>
 						<li><a href="about.html" class="hvr-bounce-to-top">About
 						</a></li>
@@ -320,7 +310,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="testimonial.html" class="hvr-bounce-to-top">Testimonial</a></li>
 					</ul>
 					<p class="footer-grid">
-						©<a href="index.html"> The House of Change</a>
+						Â©<a href="index.html"> The House of Change</a>
 					</p>
 				</div>
 				<div class="col-md-2">

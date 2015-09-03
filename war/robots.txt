@@ -1,9 +1,9 @@
 User-Agent: *
 Disallow: 
 Allow: /index.html
-Allow: /change
-Allow: /shame
-Allow: /fame
+Allow: /change.html
+Allow: /shame.html
+Allow: /fame.html
 Allow: /about.html
 Allow: /login.html
 Allow: /faq.html
