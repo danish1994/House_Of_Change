@@ -92,25 +92,25 @@ public class GoogleCallBackController extends HttpServlet {
 			//Register
 			HttpSession sess=request.getSession();
 			//Check ID
-			if(check(data.id))
+			if(check(data.email))
 			{
 				DateFormat dateFormat = new SimpleDateFormat(
 						"yyyy/MM/dd HH:mm:ss");
 				Date date = new Date();
 				String id = dateFormat.format(date);
 				//Save Data and Login
-				save(data.id, data.name, data.id+id, "user", true, "google");
+				save(data.email, data.name, data.id+id, "user", true, "google");
 				sess.setAttribute("Name",data.name);
 			}
 			else
 			{	
 				//Login
-				String name = getSavedName(data.id);
+				String name = getSavedName(data.email);
 				sess.setAttribute("Name", name);
 			}
 			System.out.println("Valid");
 			sess.setAttribute("Type","user");
-			sess.setAttribute("uID",data.id);
+			sess.setAttribute("uID",data.email);
 			response.sendRedirect("User.jsp");
 			writer.close();
 			reader.close();
