@@ -4,11 +4,10 @@ import static com.osahub.thehouse.dao.OfyService.ofy;
 
 import java.util.Date;
 
-import com.osahub.thehouse.entity.Like;
 import com.osahub.thehouse.entity.PictureDetails;
 
 public class PictureDetailsDao {
-	//Upload Picture
+	// Upload Picture
 	public static void save(String picID, String uID, String tag, String place,
 			String description, Date date, String time, boolean valid,
 			String type) {
@@ -18,8 +17,8 @@ public class PictureDetailsDao {
 		ofy().clear();
 		System.out.println("Data Saved");
 	}
-	
-	//Modify Status
+
+	// Modify Status
 	public static void modify(String picID, boolean valid) {
 		PictureDetails pd = ofy().load().type(PictureDetails.class).id(picID)
 				.now();
@@ -28,47 +27,52 @@ public class PictureDetailsDao {
 		ofy().clear();
 		System.out.println("Data Updated");
 	}
-	
-	//Delete Picture
+
+	// Delete Picture
 	public static void delete(String picID) {
-		PictureDetails pd=ofy().load().type(PictureDetails.class).id(picID).now();
+		PictureDetails pd = ofy().load().type(PictureDetails.class).id(picID)
+				.now();
 		ofy().delete().entity(pd).now();
 		ofy().clear();
 		System.out.println("Data Deleted");
 	}
-	
-	//Like Count Up
-	public static void likeCount(String picID) {
-		PictureDetails pd=ofy().load().type(PictureDetails.class).id(picID).now();
-		pd.setLikes(ofy().load().type(Like.class).filter("picID",pd.getPicID()).count());
+
+	// Like Count Up
+	public static void likeCount(String picID, int count) {
+		PictureDetails pd = ofy().load().type(PictureDetails.class).id(picID)
+				.now();
+		pd.setLikes(count);
 		ofy().save().entity(pd).now();
 		System.out.println("Like Count + 1");
 	}
 
-	//Like Count Down
-	public static void likeMinus(String picID) {
-		PictureDetails pd=ofy().load().type(PictureDetails.class).id(picID).now();
-		pd.setLikes(ofy().load().type(Like.class).filter("picID",pd.getPicID()).count());
+	// Like Count Down
+	public static void likeMinus(String picID, int count) {
+		PictureDetails pd = ofy().load().type(PictureDetails.class).id(picID)
+				.now();
+		pd.setLikes(count);
 		ofy().save().entity(pd).now();
 		System.out.println("Like Count - 1");
 	}
-	
-	//View Count Up
+
+	// View Count Up
 	public static void viewCount(String picID) {
-		PictureDetails pd=ofy().load().type(PictureDetails.class).id(picID).now();
-		pd.setView(pd.getView()+1);
+		PictureDetails pd = ofy().load().type(PictureDetails.class).id(picID)
+				.now();
+		pd.setView(pd.getView() + 1);
 		ofy().save().entity(pd).now();
 		System.out.println("View Count + 1");
 	}
-	
-	//Claim a Picture
-	public static void claim(String picID,String uID,String claimComment) {
-		PictureDetails pd=ofy().load().type(PictureDetails.class).id(picID).now();
+
+	// Claim a Picture
+	public static void claim(String picID, String uID, String claimComment) {
+		PictureDetails pd = ofy().load().type(PictureDetails.class).id(picID)
+				.now();
 		pd.setClaimID(uID);
 		pd.setClaimStatus(true);
 		pd.setClaimComment(claimComment);
 		pd.setType("change");
 		ofy().save().entity(pd).now();
 		System.out.println("Image Claimed");
-	}	
+	}
 }

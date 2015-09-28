@@ -39,7 +39,8 @@ public class LikeController extends HttpServlet {
 			List<Like> l = ofy().load().type(Like.class).filter("picID", picID)
 					.filter("uID", uID).list();
 			Iterator<Like> lIt = l.iterator();
-			int count = ofy().load().type(Like.class).filter("picID", picID).count();
+			int count = ofy().load().type(Like.class).filter("picID", picID)
+					.count();
 			if (lIt.hasNext())
 				likeStatus = "yes";
 			else
@@ -60,12 +61,12 @@ public class LikeController extends HttpServlet {
 				}
 			} else {
 				if (likeStatus.equals("no")) {
-					likeCount(picID);
 					DateFormat dateFormat = new SimpleDateFormat(
 							"yyyy/MM/dd HH:mm:ss");
 					Date date = new Date();
 					String id = dateFormat.format(date);
 					addLike(picID, uID, id + uID);
+					likeCount(picID,count+1);
 					try {
 						json.put("likeType", "un" + type);
 						json.put("likeCount", count + 1);
@@ -73,8 +74,8 @@ public class LikeController extends HttpServlet {
 						e.printStackTrace();
 					}
 				} else if (likeStatus.equals("yes")) {
-					likeMinus(picID);
 					removeLike(picID, uID);
+					likeMinus(picID,count-1);
 					try {
 						json.put("likeType", type + "s");
 						json.put("likeCount", count - 1);
@@ -83,8 +84,6 @@ public class LikeController extends HttpServlet {
 					}
 				}
 			}
-			pc.setLikes(count);
-			ofy().save().entity(pc).now();
 			jArray.put(json);
 			res.getWriter().write(jArray.toString());
 		} catch (Exception e) {

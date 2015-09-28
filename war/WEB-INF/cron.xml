@@ -5,9 +5,4 @@
 		<description>Delete Forgot Password Link</description>
 		<schedule>every 2 minutes</schedule>
 	</cron>
-	<cron>
-		<url>/repair</url>
-		<description>Repair Like Count</description>
-		<schedule>every 2 minutes</schedule>
-	</cron>
 </cronentries>
